@@ -25,7 +25,6 @@ db_host="mysql"
 db_skip=true
 
 if [[ "$TRAVIS" = true ]]; then
-    mysql -e 'CREATE DATABASE wphealthcheck;'
     db_host="127.0.0.1"
     db_skip=false
 fi
