@@ -22,10 +22,12 @@ if [[ -z $wp_version ]]; then
 fi
 
 db_host="mysql"
+db_skip=true
 
 if [[ "$TRAVIS" = true ]]; then
     mysql -e 'CREATE DATABASE wphealthcheck;'
     db_host="127.0.0.1"
+    db_skip=false
 fi
 
-ci/install-wp-tests.sh wphealthcheck root "" $db_host $wp_version true
+ci/install-wp-tests.sh wphealthcheck root "" $db_host $wp_version $db_skip
